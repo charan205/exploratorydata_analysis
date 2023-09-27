@@ -1,0 +1,16 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+df = pd.read_csv('sample.csv')
+print(df.head())
+print(df.describe())
+print(df.columns)
+print(df.isnull().sum())
+df.hist(figsize=(10,10))
+plt.show()
+corr = df.corr()
+plt.figure(figsize=(10,10))
+plt.matshow(corr, cmap='RdBu', fignum=plt.gcf().number)
+plt.xticks(range(len(corr.columns)), corr.columns, rotation=90)
+plt.yticks(range(len(corr.columns)), corr.columns)
+plt.colorbar(label='correlation coefficient')
+plt.show()
